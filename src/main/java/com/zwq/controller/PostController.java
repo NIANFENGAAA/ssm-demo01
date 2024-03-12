@@ -26,6 +26,11 @@ public class PostController {
         return "addPost";
     }
 
+    @RequestMapping("goUserHome")
+    public String goUserHome(){
+        return "userHome";
+    }
+
     @RequestMapping("addPost")
     public String addPost(@RequestParam (value = "name") String name,
                         @RequestParam (value = "content")String content,

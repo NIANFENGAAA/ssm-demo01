@@ -78,6 +78,13 @@
         width: 50px;
         height: 25px;
     }
+    .back{
+        border: 1px solid rgb(10, 10, 10);
+        float: left;
+        margin-left: 0;
+        width: 120px;
+        height: 40px;
+    }
 </style>
 <body>
 
@@ -93,6 +100,9 @@
 
 
 <div class="header1">
+    <div class="back">
+        <a href="${pageContext.request.contextPath}/goUserHome"><h3>返回</h3></a>
+    </div>
     <h4 style=" color: black;">欢迎来到线性代数论坛交流平台</h4>
 </div>
 <div class="header2">

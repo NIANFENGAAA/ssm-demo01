@@ -24,6 +24,7 @@ public class LoginController {
         return "login";
     }
 
+
     @RequestMapping("/loginUser")
     public String login(@RequestParam(value = "username")String username, @RequestParam(value = "password") String password, HttpServletResponse response, HttpServletRequest request, Model model){
         HttpSession session=request.getSession();
