@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zwq.dao.AlgorithmMapper">
+
+    <insert id="addAlgorithm" parameterType="algorithm">
+        insert into ssm.algorithm(algorithm_name, user_id, way) values(#{algorithm_name},#{user_id},#{way});
+    </insert>
+
+    <select id="selectAlgorithmById" resultType="algorithm">
+        select * from ssm.algorithm where user_id = #{id};
+    </select>
+
+    <select id="selectAllAlgorithm" resultType="algorithm">
+        select * from ssm.algorithm;
+    </select>
+
+    <select id="selectOneAlgorithmById" resultType="algorithm">
+        select * from ssm.algorithm where id = #{id};
+    </select>
+
+    <delete id="deleteAlgorithmById" parameterType="int">
+        delete from ssm.algorithm where id = #{id};
+    </delete>
+
+    <select id="selectAlgorithmByName" resultType="algorithm">
+        select * from ssm.algorithm where algorithm_name like #{keyword};
+    </select>
+
+</mapper>
