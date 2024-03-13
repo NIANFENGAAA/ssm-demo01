@@ -25,7 +25,9 @@ public class test {
 
 
 //        Post post = new Post("标题2","内容2",2);
-        postService.addZan(15);
+//        postService.addZan(15);
+        int i = userServiceImpl.updateUserAll(new User(6, "1323965112", "1323965112", "imgName"));
+        System.out.println(i);
 
 //        List<Post> posts = postService.selectAllPost();
 //        System.out.println("全部个数："+posts.size());

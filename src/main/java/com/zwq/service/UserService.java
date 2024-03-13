@@ -22,4 +22,7 @@ public interface UserService {
 
     //确认用户登录
     User loginUser(String username);
+
+    //修改用户信息
+    int updateUserAll(User user);
 }

@@ -3,8 +3,6 @@ package com.zwq.service.impl;
 import com.zwq.dao.UserMapper;
 import com.zwq.pojo.User;
 import com.zwq.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -44,5 +42,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User loginUser(String username) {
         return userMapper.loginUser(username);
+    }
+
+    @Override
+    public int updateUserAll(User user) {
+        return userMapper.updateUserAll(user);
     }
 }

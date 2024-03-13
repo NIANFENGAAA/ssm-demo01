@@ -6,8 +6,32 @@ public class User {
     private String password;
     private String email;
     private String number;
+    private String img;
 
     public User() {
+    }
+
+    public User(int id, String email, String number, String img) {
+        this.id = id;
+        this.email = email;
+        this.number = number;
+        this.img = img;
+    }
+
+    public User(String username, String password, String email, String number, String img) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.number = number;
+        this.img = img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public User(String username, String password, String email, String number) {

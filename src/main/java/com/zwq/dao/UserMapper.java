@@ -3,7 +3,6 @@ package com.zwq.dao;
 import com.zwq.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 public interface UserMapper {
@@ -25,5 +24,7 @@ public interface UserMapper {
     //确认用户登录
     User loginUser(@Param("username") String username);
 
+    //修改用户信息
+    int updateUserAll(User user);
 
 }
