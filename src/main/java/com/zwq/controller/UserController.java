@@ -30,7 +30,7 @@ public class UserController {
         return "allUser";
     }
 
-    @RequestMapping("/goUpdateUser")
+    @RequestMapping("goUpdateUser")
     public String goUpdateUser(){
         return "updateUser";
     }
