@@ -30,8 +30,13 @@ public class UserController {
         return "allUser";
     }
 
-    @RequestMapping("updateUser")
-    public String updateUser(MultipartFile img,
+    @RequestMapping("/goUpdateUser")
+    public String goUpdateUser(){
+        return "updateUser";
+    }
+
+    @RequestMapping("updateUserData")
+    public String updateUserData(MultipartFile img,
                              @RequestParam (value = "emailName")String emailName,
                              @RequestParam (value = "numberName")String numberName,
                              HttpServletRequest request){

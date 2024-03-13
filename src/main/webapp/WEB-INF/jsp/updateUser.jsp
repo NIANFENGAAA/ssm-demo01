@@ -11,7 +11,7 @@
     <title>修改用户信息</title>
 </head>
 <body>
-    <form action="${pageContext.request.contextPath}/updateUser" method="post" enctype="multipart/form-data">
+    <form action="${pageContext.request.contextPath}/updateUserData" method="post" enctype="multipart/form-data">
         新的邮箱为：<input name="emailName" type="text">
         新的电话为：<input name="numberName" type="text">
         上传新的头像：<input type="file" name="img">
