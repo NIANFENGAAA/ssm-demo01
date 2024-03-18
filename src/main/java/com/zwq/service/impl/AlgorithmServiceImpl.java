@@ -1,7 +1,11 @@
 package com.zwq.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zwq.dao.AlgorithmMapper;
 import com.zwq.pojo.Algorithm;
+import com.zwq.pojo.Post;
 import com.zwq.service.AlgorithmService;
 
 import java.util.List;
@@ -39,7 +43,22 @@ public class AlgorithmServiceImpl implements AlgorithmService {
     }
 
     @Override
-    public List<Algorithm> selectAlgorithmByName(String keyword) {
-        return algorithmMapper.selectAlgorithmByName(keyword);
+    public List<Algorithm> selectAlgorithmByName(String keyword,int userId) {
+        return algorithmMapper.selectAlgorithmByName(keyword,userId);
+    }
+
+    @Override
+    public List<Algorithm> selectAlgorithmByNameAdmin(String keyword) {
+        return algorithmMapper.selectAlgorithmByNameAdmin(keyword);
+    }
+
+    //分页
+    public PageInfo<Algorithm> getAlgorithmByPage(Integer pageNum,String keyword) {
+        //开启分页
+        Page<Object> page = PageHelper.startPage(pageNum, 3);
+        List<Algorithm> algorithmList = algorithmMapper.selectAlgorithmByNameAdmin(keyword);
+        //获取分页相关信息
+        PageInfo<Algorithm> pageInfo = new PageInfo<>(algorithmList, 3);
+        return pageInfo;
     }
 }

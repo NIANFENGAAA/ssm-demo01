@@ -7,6 +7,8 @@ public class User {
     private String email;
     private String number;
     private String img;
+    private int status;
+    private int flag;
 
     public User() {
     }
@@ -24,6 +26,41 @@ public class User {
         this.email = email;
         this.number = number;
         this.img = img;
+    }
+
+    public User(String username, String password, String email, String number, String img, int status) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.number = number;
+        this.img = img;
+        this.status = status;
+    }
+
+    public User(String username, String password, String email, String number, String img, int status, int flag) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.number = number;
+        this.img = img;
+        this.status = status;
+        this.flag = flag;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getImg() {

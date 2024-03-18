@@ -2,16 +2,28 @@
 <!DOCTYPE configuration
        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
 
     <typeAliases>
         <package name="com.zwq.pojo"/>
     </typeAliases>
 
+    <plugins>
+        <!--配置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
     <mappers>
         <mapper class="com.zwq.dao.UserMapper"/>
         <mapper class="com.zwq.dao.AlgorithmMapper"/>
         <mapper class="com.zwq.dao.PostMapper"/>
+        <mapper class="com.zwq.dao.ForumMapper"/>
+        <mapper class="com.zwq.dao.CommentMapper"/>
+        <mapper class="com.zwq.dao.StarMapper"/>
     </mappers>
 
+
+
 </configuration>
+

@@ -11,6 +11,7 @@
     <title>修改用户信息</title>
 </head>
 <body>
+    <a href="${pageContext.request.contextPath}/goUserHome">首页</a>
     <form action="${pageContext.request.contextPath}/updateUserData" method="post" enctype="multipart/form-data">
         新的邮箱为：<input name="emailName" type="text">
         新的电话为：<input name="numberName" type="text">

@@ -76,6 +76,7 @@
             height: 80px;
             width: 650px;
             float: right;
+            align-content: center;
         }
         .main_header_r_1{
             border: 1px solid black;
@@ -103,7 +104,28 @@
             width: 1100px;
             float: left;
         }
-
+        .a{
+            width: 500px;
+            height: 300px;
+            position: absolute;
+        }
+        .b{
+            border: 1px solid black;
+            margin-left: 0;
+            margin-top: 300px;
+            height: 100px;
+            width: 100px;
+            float: left;
+        }
+        .fenye{
+            border: 1px solid black;
+            margin-left: 200px;
+            margin-top: 20px;
+            height: 50px;
+            width: 700px;
+            float: left;
+            text-align: center;
+        }
 
     </style>
 
@@ -111,33 +133,6 @@
 </head>
 
 <body>
-
-
-<c:if test="${!empty sessionScope.error1}">
-    <script>alert("文件过大")</script>
-</c:if>
-<c:if test="${!empty sessionScope.error2}">
-    <script>alert("文件上传失败!")</script>
-</c:if>
-<c:if test="${!empty sessionScope.error3}">
-    <script>alert("不支持上传该类型文件！")</script>
-</c:if>
-<%--<c:if test="${!empty sessionScope.success}">
-    <script>alert("上传成功！")</script>
-</c:if>--%>
-
-<c:if test="${!empty sessionScope.success_add}">
-    <script>alert("添加算法成功！")</script>
-</c:if>
-<c:if test="${!empty sessionScope.error_add}">
-    <script>alert("添加算法失败，请重试！")</script>
-</c:if>
-<c:if test="${!empty sessionScope.yeah}">
-    <script>alert("删除成功！")</script>
-</c:if>
-<c:if test="${!empty sessionScope.no}">
-    <script>alert("删除失败！")</script>
-</c:if>
 
 
 <div id="wrapper">
@@ -197,7 +192,7 @@
                 <li>
                     <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">论坛</span><span class="label label-warning pull-right">16</span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="${pageContext.request.contextPath}/getAllElement?keyword=">进入论坛</a>
+                        <li><a href="${pageContext.request.contextPath}/getAllElement0?keyword=">进入论坛</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/selectAllPostOfUser?pageNum=1">查看帖子</a>
                         </li>
@@ -330,7 +325,7 @@
 
                 <div class="main_header_l">
                     <div class="main_header_l_sousuo">
-                        <form method="get" action="${pageContext.request.contextPath}/selectAlgorithmByKeyword">
+                        <form method="get" action="${pageContext.request.contextPath}/">
                             <input name="keyword" value="">
                             <button type="submit">搜索</button>
                         </form>
@@ -338,39 +333,28 @@
                 </div>
 
                 <div class="main_header_r">
-                    <form action="${pageContext.request.contextPath}/upLoad" method="post" name="upLoad" id="upLoad" enctype="multipart/form-data">
-                        <div class="main_header_r_1">
-                            <h4>上传算法：</h4>
-                        </div>
-                        <div class="main_header_r_2">
-                            <input type="file" name="some" size="20">
-                        </div>
-                        <div class="main_header_r_3">
-                            <input type="submit" value="提交">
-                        </div>
 
-                    </form>
                 </div>
 
                 <div class="main_01">
                     <table width="1041" height="139.333" border="1" style="table-layout: fixed">
                         <tbody>
                         <tr>
-                            <th scope="col" width="10%"><div align="center">算法编号</div></th>
-                            <th scope="col" width="30%"><div align="center">算法名称</div></th>
-                            <th scope="col" width="50%"><div align="center">存放路径</div></th>
-                            <th scope="col" width="10%"><div align="center">操作</div></th>
+                            <th scope="col" width="20%"><div align="center">帖子编号</div></th>
+                            <th scope="col" width="50%"><div align="center">帖子名称</div></th>
+                            <%--                            <th scope="col" width="50%"><div align="center">存放路径</div></th>--%>
+                            <th scope="col" width="30%"><div align="center">操作</div></th>
                         </tr>
-                        <c:forEach items="${sessionScope.algorithmList}" var="algorithm">
-                        <tr>
-                            <td width="10%"><div align="center">${algorithm.id}</div></td>
-                            <td width="30%"><div align="center">${algorithm.algorithm_name}</div></td>
-                            <td width="50%"><div align="center">${algorithm.way}</div></td>
-                            <td width="10%"><div align="center">
-                                <a href="http://localhost:8080/Project06_war//down?id=${algorithm.id}"><h4>下载</h4></a>
-                                <a href="http://localhost:8080/Project06_war//delete?id=${algorithm.id}"><h4>删除</h4></a>
-                            </div></td>
-                        </tr>
+                        <c:forEach items="${sessionScope.allStarPost}" var="post">
+                            <tr>
+                                <td width="20%"><div align="center">${post.id}</div></td>
+                                <td width="50%"><div align="center">${post.post_name}</div></td>
+                                    <%--                                <td width="50%"><div align="center">${algorithm.way}</div></td>--%>
+                                <td width="30%"><div align="center">
+<%--                                    <a href="http://localhost:8080/Project06_war//"><h4>编辑</h4></a>--%>
+                                    <a href="http://localhost:8080/Project06_war//deletePostByUserId?id=${post.id}"><h4>删除</h4></a>
+                                </div></td>
+                            </tr>
                         </c:forEach>
                         </tbody>
                     </table>
@@ -390,7 +374,6 @@
 <%--                        </table>--%>
 
 <%--                    </div>--%>
-
 
                 </div>
 

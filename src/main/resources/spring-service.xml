@@ -19,6 +19,14 @@
         <property name="postMapper" ref="postMapper"/>
     </bean>
 
+    <bean id="CommentServiceImpl" class="com.zwq.service.impl.CommentServiceImpl">
+        <property name="commentMapper" ref="commentMapper"/>
+    </bean>
+
+    <bean id="StarServiceImpl" class="com.zwq.service.impl.StarServiceImpl">
+        <property name="starMapper" ref="starMapper"/>
+    </bean>
+
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--注入数据源-->
         <property name="dataSource" ref="dataSource"/>

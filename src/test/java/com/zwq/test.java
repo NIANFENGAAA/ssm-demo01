@@ -1,5 +1,8 @@
 package com.zwq;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zwq.pojo.Algorithm;
 import com.zwq.pojo.Post;
 import com.zwq.pojo.User;
@@ -23,11 +26,36 @@ public class test {
         AlgorithmService algorithmService = (AlgorithmService) context.getBean("AlgorithmServiceImpl");
         PostService postService = (PostService) context.getBean("PostServiceImpl");
 
+//        PageInfo<Algorithm> pageInfo = algorithmService.getAlgorithmByPage(1);
+//        System.out.println(pageInfo.getList().size());
 
+
+
+//        Page<Object> page = PageHelper.startPage(1, 5);
+//        List<Post> posts = postService.selectAllPost();
+//        System.out.println(posts.size());
+//        //获取分页相关信息
+//        PageInfo<Post> pageInfo = new PageInfo<>(posts, 5);
+//        System.out.println(pageInfo.getPageSize());
+//        System.out.println(pageInfo.getPageNum());
+//
+//
+//        List<Post> pageInfoPosts = pageInfo.getList();
+//        System.out.println(pageInfoPosts.size());
+//        for (Post post : pageInfoPosts) {
+//            System.out.println("post:" + post.getPost_name());
+//        }
+//        User user = new User("1","666");
+//        int i = userServiceImpl.updateUser(user);
+//        System.out.println(i);
+//        int i = postService.reduceZan(11);
+//        System.out.println(i);
 //        Post post = new Post("标题2","内容2",2);
 //        postService.addZan(15);
-        int i = userServiceImpl.updateUserAll(new User(6, "1323965112", "1323965112", "imgName"));
-        System.out.println(i);
+//        int id = postService.getUserIdByPostId(11);
+//        System.out.println(id);
+//        int i = userServiceImpl.updateUserAll(new User(6, "1323965112", "1323965112", "imgName"));
+//        System.out.println(i);
 
 //        List<Post> posts = postService.selectAllPost();
 //        System.out.println("全部个数："+posts.size());

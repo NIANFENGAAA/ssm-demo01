@@ -322,4 +322,190 @@ public class CalculateController {
         return "matrixTranspose";
     }
 
+    @RequestMapping("goMatrixInverse")
+    public String goMatrixInverse(){
+        return "matrixInverse";
+    }
+
+    @RequestMapping("MatrixInverse")
+    public String MatrixInverse(@RequestParam(value = "row1") int row1,
+                                @RequestParam(value = "colum1") int colum1,
+                                @RequestParam(value = "body1") String body1,
+                                HttpServletRequest request){
+        HttpSession session=request.getSession();
+
+        String[] x1 = body1.split(",");
+
+        int[] y1 = new int[x1.length];
+
+        //将数组转为int类型
+        for (int i = 0; i < x1.length; i++) {
+            y1[i] = Integer.parseInt(x1[i]);
+        }
+
+        for (int i = 0; i < y1.length; i++) {
+            System.out.println("y的数组,传过来的数组："+y1[i]);
+        }
+        System.out.println("-----------------------");
+        System.out.println("数组长度：" + y1.length);
+
+        int count = 0;
+        //创建二维数组接收
+        int [][] A = new int[row1][colum1];
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < colum1; j++) {
+                A[i][j] = y1[count];
+                count++;
+            }
+        }
+
+        //打印
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[i].length; j++) {
+                System.out.print(A[i][j] + "  ");
+            }
+            System.out.println();
+        }
+
+        int[][] inverse = inverse(A);
+
+        //打印
+        System.out.println("==============逆矩阵================");
+        for (int i = 0; i < inverse.length; i++) {
+            for (int j = 0; j < inverse[i].length; j++) {
+                System.out.print(inverse[i][j] + "  ");
+            }
+            System.out.println();
+        }
+
+        ArrayList<String> list = new ArrayList<>();
+
+        for (int i = 0; i < row1; i++) {
+            String s = "";
+            for (int i1 = 0; i1 < colum1; i1++) {
+                s = s + inverse[i][i1];
+                if (i1 != (colum1-1))
+                    s = s + " * ";
+            }
+            list.add(s);
+        }
+
+        session.setAttribute("list",list);
+
+        System.out.println(list);
+
+
+        return "matrixInverse";
+    }
+
+    @RequestMapping("goMatrixDet")
+    public String goMatrixDet(){
+        return "matrixDet";
+    }
+
+    @RequestMapping("MatrixDet")
+    public String MatrixDet(@RequestParam(value = "row1") int row1,
+                            @RequestParam(value = "colum1") int colum1,
+                            @RequestParam(value = "body1") String body1,
+                            HttpServletRequest request){
+        HttpSession session=request.getSession();
+
+        String[] x1 = body1.split(",");
+
+        int[] y1 = new int[x1.length];
+
+        //将数组转为int类型
+        for (int i = 0; i < x1.length; i++) {
+            y1[i] = Integer.parseInt(x1[i]);
+        }
+
+        for (int i = 0; i < y1.length; i++) {
+            System.out.println("y的数组,传过来的数组："+y1[i]);
+        }
+        System.out.println("-----------------------");
+        System.out.println("数组长度：" + y1.length);
+
+        int count = 0;
+        //创建二维数组接收
+        int [][] A = new int[row1][colum1];
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < colum1; j++) {
+                A[i][j] = y1[count];
+                count++;
+            }
+        }
+
+        //打印
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[i].length; j++) {
+                System.out.print(A[i][j] + "  ");
+            }
+            System.out.println();
+        }
+
+        int determinant = determinant(A);
+        System.out.println("行列式为：" + determinant);
+
+        session.setAttribute("determinant",determinant);
+
+
+        return "matrixDet";
+    }
+
+
+    //获取矩阵的逆
+    public static int[][] inverse(int[][] A) {
+        int[][] B = new int[A.length][A[0].length];
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[0].length; j++) {
+                B[i][j] = A[i][j];
+            }
+        }
+        int[][] C = new int[A.length][A[0].length];
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[0].length; j++) {
+                C[i][j] = (int) Math.pow(-1, i + j) * determinant(minor(B, j, i));
+            }
+        }
+        int[][] D = new int[A.length][A[0].length];
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < A[0].length; j++) {
+                D[i][j] = C[i][j] / determinant(A);
+            }
+        }
+        return D;
+    }
+
+    //求解矩阵的行列式
+    private static int determinant(int[][] a) {
+        if (a.length == 1) {
+            return a[0][0];
+        }
+        int det = 0;
+        for (int i = 0; i < a[0].length; i++) {
+            det += (int) Math.pow(-1, i) * a[0][i] * determinant(minor(a, 0, i));
+        }
+        return det;
+    }
+    //求解二维矩阵在某一位置的伴随矩阵
+    private static int[][] minor(int[][] b, int i, int j) {
+        int[][] a = new int[b.length - 1][b[0].length - 1];
+        for (int x = 0, y = 0; x < b.length; x++) {
+            if (x == i) {
+                continue;
+            }
+            for (int m = 0,n = 0; m < b[0].length; m++) {
+                if (m == j) {
+                    continue;
+                }
+                a[y][n] = b[x][m];
+                n++;
+            }
+            y++;
+        }
+        return a;
+    }
+
 }
+
+

@@ -3,17 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zwq.dao.PostMapper">
+    <select id="selectAllPost" resultType="post">
+        select * from ssm.post
+    </select>
     <insert id="addPost" parameterType="post">
         insert into ssm.post(post_name, post_content, user_id,zan,img)
         values(#{post_name},#{post_content},#{user_id},#{zan},#{img});
     </insert>
 
-    <select id="selectAllPost" resultType="post">
-        select * from ssm.post;
-    </select>
-
     <select id="selectPostById" resultType="post">
-        select * from ssm.post where user_id = #{userid};
+        select * from ssm.post where user_id = #{userid}
     </select>
 
     <delete id="deletePost" parameterType="int">
@@ -23,4 +22,20 @@
     <update id="addZan" parameterType="post">
         update ssm.post set zan = zan + 1 where id = #{postId};
     </update>
+
+    <select id="getUserIdByPostId" resultType="int">
+        select ssm.post.user_id from ssm.post where ssm.post.id = #{postId};
+    </select>
+
+    <update id="reduceZan" parameterType="int">
+        update ssm.post set zan = zan - 1 where id = #{postId};
+    </update>
+
+    <select id="getPostByPostId" resultType="post">
+        select * from ssm.post where id = #{postId}
+    </select>
+
+    <select id="selectAllPostByKey" resultType="post">
+        select * from ssm.post where post_content like #{keyword}
+    </select>
 </mapper>

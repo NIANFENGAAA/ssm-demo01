@@ -5,7 +5,7 @@
 <mapper namespace="com.zwq.dao.UserMapper">
 
     <insert id="addUser" parameterType="User">
-        insert into ssm.user(username, password, email, number) values(#{username},#{password},#{email},#{number});
+        insert into ssm.user(username, password, email, number,status,flag) values(#{username},#{password},#{email},#{number},0,0);
     </insert>
 
     <delete id="deleteUser" parameterType="int">
@@ -32,5 +32,21 @@
     <update id="updateUserAll" parameterType="user">
         update ssm.user set email = #{email}, number = #{number}, img = #{img} where id = #{id};
     </update>
+
+    <select id="getFlag" resultType="int">
+        select flag from ssm.user where username = #{username}
+    </select>
+
+    <select id="adminSelectAllUser" resultType="user">
+        select * from ssm.user where username like #{keyword} and flag = 0
+    </select>
+
+    <update id="prohibitByUserId" parameterType="int">
+        update ssm.user set status = #{status} where id = #{userId}
+    </update>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from ssm.user where id = #{userId}
+    </delete>
 
 </mapper>

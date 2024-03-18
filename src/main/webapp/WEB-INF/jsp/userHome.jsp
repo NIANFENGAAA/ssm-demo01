@@ -63,7 +63,7 @@
                              </span> <span class="text-muted text-xs block">普通用户<b class="caret"></b></span> </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="form_avatar.html">修改头像</a>
+                            <li><a href="${pageContext.request.contextPath}/goUpdatePassword">修改密码</a>
                             </li>
                             <li><a href="${pageContext.request.contextPath}/goUpdateUser">修改资料</a>
                             </li>
@@ -72,7 +72,7 @@
                             <li><a href="mailbox.html">信箱</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html">安全退出</a>
+                            <li><a href="${pageContext.request.contextPath}/exitUser">安全退出</a>
                             </li>
                         </ul>
                     </div>
@@ -84,16 +84,17 @@
                 <li class="active">
                     <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">线性代数计算</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+                        <li><a href="${pageContext.request.contextPath}/goMatrixDet">求矩阵的秩</a>
+                        </li>
                         <li><a href="${pageContext.request.contextPath}/goCalculatePage">矩阵加法</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/goMultiplication">矩阵乘法</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/goMatrixTranspose">矩阵转置</a>
                         </li>
-                        <li><a href="index_3.html">实现逆矩阵</a>
+                        <li><a href="${pageContext.request.contextPath}/goMatrixInverse">实现逆矩阵</a>
                         </li>
-                        <li><a href="index_4.html">求矩阵的秩</a>
-                        </li>
+
                     </ul>
                 </li>
 
@@ -105,11 +106,13 @@
                 <li>
                     <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">论坛</span><span class="label label-warning pull-right">16</span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="${pageContext.request.contextPath}/getAllPost">进入论坛</a>
+                        <li><a href="${pageContext.request.contextPath}/getAllElement0?keyword=">进入论坛</a>
                         </li>
-                        <li><a href="${pageContext.request.contextPath}/selectPostByUserId">查看帖子</a>
+                        <li><a href="${pageContext.request.contextPath}/selectAllPostOfUser?pageNum=1">查看帖子</a>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/goAddPost">写帖子</a>
+                        </li>
+                        <li><a href="${pageContext.request.contextPath}/getAllStar">收藏</a>
                         </li>
                     </ul>
                 </li>
@@ -151,7 +154,7 @@
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="index.html#">
-                            <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
+                            <i class="fa fa-envelope"></i> <span class="label label-warning"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-messages">
                             <li>
@@ -225,7 +228,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="login.jsp">
+                        <a href="${pageContext.request.contextPath}/exitUser">
                             <i class="fa fa-sign-out"></i> 退出
                         </a>
                     </li>

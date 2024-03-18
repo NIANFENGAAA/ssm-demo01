@@ -106,8 +106,10 @@
     <h4 style=" color: black;">欢迎来到线性代数论坛交流平台</h4>
 </div>
 <div class="header2">
-    <input name="postName" value="">
-    <input type="button" value="搜索">
+    <form method="get" action="${pageContext.request.contextPath}/getAllElement">
+        <input name="keyword" value="">
+        <input type="submit" value="搜索">
+    </form>
 </div>
 
 <c:forEach items="${sessionScope.posts}" var="post">

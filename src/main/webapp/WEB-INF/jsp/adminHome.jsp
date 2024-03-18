@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,7 +6,7 @@
   Time: 15:29
   To change this template use File | Settings | File Templates.
 --%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 
@@ -33,7 +32,6 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css?v=2.2.0" rel="stylesheet">
 
-
     <style>
         .main{
             border: 1px solid black;
@@ -55,28 +53,28 @@
             width: 1100px;
             float: left;
         }
-        .main_header_l{
+        /* .main_header_l{
             border: 1px solid black;
             margin-top: 10px;
             margin-left: 10px;
             height: 80px;
             width: 350px;
             float: left;
-        }
+        } */
         .main_header_l_sousuo{
             border: 1px solid black;
             margin-top: 20px;
-            margin-left: 2px;
+            margin-left: 330px;
             float: left;
         }
-        .main_header_r{
-            border: 1px solid black;
-            margin-top: 10px;
-            margin-right: 10px;
-            height: 80px;
-            width: 650px;
-            float: right;
-        }
+        /*.main_header_r{*/
+        /*    border: 1px solid black;*/
+        /*    margin-top: 10px;*/
+        /*    margin-right: 10px;*/
+        /*    height: 80px;*/
+        /*    width: 650px;*/
+        /*    float: right;*/
+        /*}*/
         .main_header_r_1{
             border: 1px solid black;
             margin-top: 20px;
@@ -98,11 +96,12 @@
         .main_01{
             border: 1px solid black;
             margin-top: 25px;
-            margin-left: 0;
+            margin-left: 100px;
             height: 800px;
             width: 1100px;
             float: left;
         }
+
 
 
     </style>
@@ -111,35 +110,6 @@
 </head>
 
 <body>
-
-
-<c:if test="${!empty sessionScope.error1}">
-    <script>alert("文件过大")</script>
-</c:if>
-<c:if test="${!empty sessionScope.error2}">
-    <script>alert("文件上传失败!")</script>
-</c:if>
-<c:if test="${!empty sessionScope.error3}">
-    <script>alert("不支持上传该类型文件！")</script>
-</c:if>
-<%--<c:if test="${!empty sessionScope.success}">
-    <script>alert("上传成功！")</script>
-</c:if>--%>
-
-<c:if test="${!empty sessionScope.success_add}">
-    <script>alert("添加算法成功！")</script>
-</c:if>
-<c:if test="${!empty sessionScope.error_add}">
-    <script>alert("添加算法失败，请重试！")</script>
-</c:if>
-<c:if test="${!empty sessionScope.yeah}">
-    <script>alert("删除成功！")</script>
-</c:if>
-<c:if test="${!empty sessionScope.no}">
-    <script>alert("删除失败！")</script>
-</c:if>
-
-
 <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
@@ -147,11 +117,11 @@
                 <li class="nav-header">
 
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            <img alt="image" class="img-circle" src="profile_small.jpg" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                                 <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${sessionScope.username}</strong>
-                             </span> <span class="text-muted text-xs block">普通用户<b class="caret"></b></span> </span>
+                             </span> <span class="text-muted text-xs block">管理员<b class="caret"></b></span> </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="${pageContext.request.contextPath}/goUpdatePassword">修改密码</a>
@@ -172,52 +142,27 @@
                     </div>
 
                 </li>
-                <li class="active">
-                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">线性代数计算</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="${pageContext.request.contextPath}/goMatrixDet">求矩阵的秩</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/goCalculatePage">矩阵加法</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/goMultiplication">矩阵乘法</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/goMatrixTranspose">矩阵转置</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/goMatrixInverse">实现逆矩阵</a>
-                        </li>
-
-                    </ul>
-                </li>
-
-
-
-
-
 
                 <li>
-                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">论坛</span><span class="label label-warning pull-right">16</span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="${pageContext.request.contextPath}/getAllElement?keyword=">进入论坛</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/selectAllPostOfUser?pageNum=1">查看帖子</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/goAddPost">写帖子</a>
-                        </li>
-                        <li><a href="${pageContext.request.contextPath}/getAllStar">收藏</a>
-                        </li>
-                    </ul>
+                    <a href="http://localhost:8080/Project06_war//adminGetAllUser?keyword="><i class="fa fa-edit"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                 </li>
 
                 <li>
-                    <a href="index.html#"><i class="fa fa-edit"></i> <span class="nav-label">算法管理</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="${pageContext.request.contextPath}/selectAlgorithmByKeyword?keyword=">我的算法</a>
-                        </li>
-                    </ul>
+                    <a href="http://localhost:8080/Project06_war//adminGetAllAlgorithm?keyword="><i class="fa fa-edit"></i> <span class="nav-label">算法管理</span><span class="fa arrow"></span></a>
+
+                </li>
+                <li>
+                    <a href="http://localhost:8080/Project06_war//adminGetAllPost?keyword="><i class="fa fa-edit"></i> <span class="nav-label">帖子管理</span><span class="fa arrow"></span></a>
+
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}"><i class="fa fa-edit"></i> <span class="nav-label">日志管理</span><span class="fa arrow"></span></a>
+
                 </li>
             </ul>
         </div>
     </nav>
+
 
 
 
@@ -327,75 +272,66 @@
         <%--主体内容--%>
         <div class="main">
             <div class="main_header">
-
                 <div class="main_header_l">
                     <div class="main_header_l_sousuo">
-                        <form method="get" action="${pageContext.request.contextPath}/selectAlgorithmByKeyword">
+                        <form method="get" action="${pageContext.request.contextPath}/adminGetAllUser">
                             <input name="keyword" value="">
                             <button type="submit">搜索</button>
                         </form>
                     </div>
                 </div>
+            </div>
 
-                <div class="main_header_r">
-                    <form action="${pageContext.request.contextPath}/upLoad" method="post" name="upLoad" id="upLoad" enctype="multipart/form-data">
-                        <div class="main_header_r_1">
-                            <h4>上传算法：</h4>
-                        </div>
-                        <div class="main_header_r_2">
-                            <input type="file" name="some" size="20">
-                        </div>
-                        <div class="main_header_r_3">
-                            <input type="submit" value="提交">
-                        </div>
-
-                    </form>
-                </div>
-
-                <div class="main_01">
-                    <table width="1041" height="139.333" border="1" style="table-layout: fixed">
-                        <tbody>
+            <div class="main_01">
+                <table width="1041" height="139.333" border="1" style="table-layout: fixed">
+                    <tbody>
+                    <tr>
+                        <th scope="col" width="10%"><div align="center">用户编号</div></th>
+                        <th scope="col" width="30%"><div align="center">用户名称</div></th>
+                        <%--                            <th scope="col" width="50%"><div align="center">存放路径</div></th>--%>
+                        <th scope="col" width="30%"><div align="center">状态</div></th>
+                        <th scope="col" width="30%"><div align="center">操作</div></th>
+                    </tr>
+                    <c:forEach items="${sessionScope.users}" var="user">
                         <tr>
-                            <th scope="col" width="10%"><div align="center">算法编号</div></th>
-                            <th scope="col" width="30%"><div align="center">算法名称</div></th>
-                            <th scope="col" width="50%"><div align="center">存放路径</div></th>
-                            <th scope="col" width="10%"><div align="center">操作</div></th>
-                        </tr>
-                        <c:forEach items="${sessionScope.algorithmList}" var="algorithm">
-                        <tr>
-                            <td width="10%"><div align="center">${algorithm.id}</div></td>
-                            <td width="30%"><div align="center">${algorithm.algorithm_name}</div></td>
-                            <td width="50%"><div align="center">${algorithm.way}</div></td>
-                            <td width="10%"><div align="center">
-                                <a href="http://localhost:8080/Project06_war//down?id=${algorithm.id}"><h4>下载</h4></a>
-                                <a href="http://localhost:8080/Project06_war//delete?id=${algorithm.id}"><h4>删除</h4></a>
+                            <td width="20%"><div align="center">${user.id}</div></td>
+                            <td width="50%"><div align="center">${user.username}</div></td>
+                            <td width="30%"><div align="center">
+                                <c:if test="${user.status == 0}"><h4>可用</h4></c:if>
+                                <c:if test="${user.status == 1}"><h4>禁用</h4></c:if>
+                            </div></td>
+                            <td width="30%"><div align="center">
+                                    <%--                                    <a href="http://localhost:8080/Project06_war//"><h4>编辑</h4></a>--%>
+                                <a href="http://localhost:8080/Project06_war//prohibitUser?userId=${user.id}"><h4>禁用</h4></a>
+                                <a href="http://localhost:8080/Project06_war//usingUser?userId=${user.id}"><h4>启用</h4></a>
+                                <a href="http://localhost:8080/Project06_war//deleteUser?userId=${user.id}"><h4>删除</h4></a>
                             </div></td>
                         </tr>
-                        </c:forEach>
-                        </tbody>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+                <div class="fenye">
+                    <table width="700" height="71" border="0" align="center">
+                        <tr>
+                            <td width="150" height="65">总共：${userPage.total}条数据</td>
+                            <td width="200">当前：第${userPage.pageNum}/${userPage.pages}页</td>
+                            <td width="350">请选择：第
+                                <c:forEach var="num" begin="1" end="${userPage.pages}">
+                                    <a href="http://localhost:8080/Project06_war//adminUserPageInfo?pageNum=${num}">${num}</a>
+                                </c:forEach>
+                                页</td>
+
+                        </tr>
                     </table>
-
-<%--                    <div class="fenye">--%>
-<%--                        <table width="700" height="71" border="0" align="center">--%>
-<%--                            <tr>--%>
-<%--                                <td width="150" height="65">总共：${page.pages}条数据</td>--%>
-<%--                                <td width="200">当前：第${page.pageNum}/${page.pages}页</td>--%>
-<%--                                <td width="350">请选择：第--%>
-<%--                                    <c:forEach var="num" begin="1" end="${page.pages}">--%>
-<%--                                        <a href="http://localhost:8080/Project06_war//selectAllPostOfUser?pageNum=${num}">${num}</a>--%>
-<%--                                    </c:forEach>--%>
-<%--                                    页</td>--%>
-
-<%--                            </tr>--%>
-<%--                        </table>--%>
-
-<%--                    </div>--%>
-
 
                 </div>
 
             </div>
+
         </div>
+
+
 
         <div class="row  border-bottom white-bg dashboard-header">
         </div>

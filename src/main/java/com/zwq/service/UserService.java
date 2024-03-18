@@ -1,5 +1,6 @@
 package com.zwq.service;
 
+import com.github.pagehelper.PageInfo;
 import com.zwq.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,4 +26,14 @@ public interface UserService {
 
     //修改用户信息
     int updateUserAll(User user);
+    //确认用户身份
+    int getFlag(User user);
+    //管理员查询所有用户
+    List<User> adminSelectAllUser(String keyword);
+    //分页
+    PageInfo<User> getUserByPage(Integer pageNum, String keyword);
+    //根据用户id禁用用户
+    int prohibitByUserId(int userId,int status);
+    //根据id删除用户
+    int deleteUserById(int userId);
 }

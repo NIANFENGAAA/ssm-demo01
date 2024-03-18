@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zwq.dao.CommentMapper">
+    <select id="getAllCommentByPostId" resultType="comment">
+        select * from ssm.comment where comment_post_id = #{id};
+    </select>
+
+    <insert id="addComment" parameterType="comment">
+        insert into ssm.comment(comment_content, comment_user_id, comment_post_id)
+        VALUES (#{comment_content},#{comment_user_id}, #{comment_post_id})
+    </insert>
+
+    <delete id="deleteCommentByPostId" parameterType="int">
+        delete from ssm.comment where comment_post_id = #{postId}
+    </delete>
+</mapper>

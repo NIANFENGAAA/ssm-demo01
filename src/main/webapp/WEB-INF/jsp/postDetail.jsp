@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 朱文强
@@ -5,7 +6,8 @@
   Time: 22:04
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +17,11 @@
 </head>
 
 <style>
+    .all{
+        height: 100%;
+        width: 100%;
+        background: #4b484a;
+    }
     .header-row{
         border: 1px solid rgb(10, 10, 10);
         float: left;
@@ -22,7 +29,7 @@
         width: 100%;
     }
     .header-row1{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         margin-top: 8px;
         margin-left: 300px;
@@ -31,7 +38,7 @@
         text-align: center;
     }
     .header-row2{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         margin-top: 3px;
         margin-left: 25px;
@@ -39,7 +46,7 @@
         width: 300px;
     }
     .header-row2-01{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         margin-top: 6px;
         margin-left: 5px;
@@ -48,7 +55,7 @@
         text-align: center;
     }
     .header-row2-02{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         margin-top: 6px;
         margin-left: 2px;
@@ -57,7 +64,7 @@
         text-align: center;
     }
     .header-row3{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         margin-top: 8px;
         margin-left: 50px;
@@ -71,9 +78,10 @@
         width: 800px;
         margin-top: 5px;
         margin-left: 300px;
+
     }
     .main-header01{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 40px;
         width: 40px;
@@ -81,7 +89,7 @@
         margin-left: 20px;
     }
     .main-header02{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 20px;
         width: 100px;
@@ -89,7 +97,7 @@
         margin-left: 20px;
     }
     .main-header03{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 50px;
         width: 780px;
@@ -97,7 +105,7 @@
         margin-left: 10px;
     }
     .main-header04{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 350px;
         width: 780px;
@@ -105,7 +113,7 @@
         margin-left: 10px;
     }
     .main-header05{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 100px;
         width: 780px;
@@ -113,7 +121,7 @@
         margin-left: 10px;
     }
     .main-header06-l{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 30px;
         width: 100px;
@@ -122,7 +130,7 @@
         text-align: center;
     }
     .main-header06-m{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 30px;
         width: 100px;
@@ -131,7 +139,7 @@
         text-align: center;
     }
     .main-header06-r{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 30px;
         width: 100px;
@@ -148,7 +156,7 @@
         margin-left: 10px;
     }
     .comment-up01{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 40px;
         width: 40px;
@@ -156,7 +164,7 @@
         margin-left: 10px;
     }
     .comment-up02{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 30px;
         width: 700px;
@@ -164,19 +172,42 @@
         margin-left: 10px;
     }
     .comment-footer{
-        border: 1px solid rgb(10, 10, 10);
+        /*border: 1px solid rgb(10, 10, 10);*/
         float: left;
         height: 60px;
         width: 700px;
         margin-top: 5px;
         margin-left: 60px;
     }
+    .a{
+        color: black;
+        text-decoration: none;
+    }
+    .foot_comment{
+        /*border: 1px solid rgb(10, 10, 10);*/
+        float: left;
+        height: 500px;
+        width: 780px;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .input_type{
+        height: 35px;
+        width: 700px;
+        margin-top: 3px;
+        float: left;
+    }
+    .comment_type{
+        margin-top: 10px;
+        margin-left: 10px;
+    }
 </style>
 
 <body>
+<div class="all">
 
 <div class="header-row">
-    <div class="header-row1">首页</div>
+    <div class="header-row1"><a href="${pageContext.request.contextPath}/goNewForum" class="a">返回</a> </div>
     <div class="header-row2">
         <div class="header-row2-01">
             <input type="text">
@@ -186,49 +217,72 @@
         </div>
     </div>
     <div class="header-row3">
-        <a href="#">写文章</a>
+        <a href="${pageContext.request.contextPath}/goAddPost" class="a">写文章</a>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <a href="#">登录</a>
+        <a href="${pageContext.request.contextPath}/goLoginUser" class="a">登录</a>
     </div>
 </div>
+
+
 
 <div class="main">
     <div class="main-header01">
-        头像
+        <img src="img/${sessionScope.postDetailEle.user.img}" height="40px">
     </div>
     <div class="main-header02">
-        用户名
+        ${sessionScope.postDetailEle.user.username}
     </div>
     <div class="main-header03">
-        <h2>文章标题</h2>
+        <h2>${sessionScope.postDetailEle.post.post_name}</h2>
     </div>
     <div class="main-header04">
-        文章图片
+        <img src="img/${sessionScope.postDetailEle.post.img}" height="350px">
     </div>
     <div class="main-header05">
-        文章内容
+            ${sessionScope.postDetailEle.post.post_content}
     </div>
     <div class="main-header06-l">
-        几条评论
+            ${sessionScope.postDetailEle.comments.size()}条评论
     </div>
     <div class="main-header06-r">
-        ★数量
+        <a href="http://localhost:8080/Project06_war//addStar?postId=${sessionScope.postDetailEle.post.id}"class="a">
+            ★${sessionScope.postDetailEle.star}
+        </a>
+
     </div>
     <div class="main-header06-m">
-        ❤点赞数
+        <a href="http://localhost:8080/Project06_war//addZan?postId=${sessionScope.postDetailEle.post.id}" class="a">
+            ❤${sessionScope.postDetailEle.post.zan}
+        </a>
+
     </div>
+
+
+    <c:forEach items="${sessionScope.postDetailEle.comments}" var="comment">
     <div class="comment">
         <div class="comment-up01">
-            头像
+            <img src="img/${comment.user.img}" height="40px">
         </div>
         <div class="comment-up02">
-            评论者id
+                ${comment.user.username}
         </div>
         <div class="comment-footer">
-            评论内容
+                ${comment.comment_content}
         </div>
     </div>
+    </c:forEach>
+
+    <div class="foot_comment">
+        <form method="post" action="http://localhost:8080/Project06_war//addComment?postId=${sessionScope.postDetailEle.post.id}" >
+            <input type="text" class="input_type" name="commentName">
+            <input type="submit" value="评论" class="comment_type">
+
+        </form>
+    </div>
+
 </div>
 
+
+</div>
 </body>
 </html>

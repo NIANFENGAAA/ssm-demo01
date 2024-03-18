@@ -26,5 +26,15 @@ public interface UserMapper {
 
     //修改用户信息
     int updateUserAll(User user);
+    //确认用户身份
+    int getFlag(User user);
+    //管理员查询所有用户
+    List<User> adminSelectAllUser(String keyword);
+    //根据用户id启用和禁用用户
+    int prohibitByUserId(@Param("userId") int userId,@Param("status") int status);
+    //根据id删除用户
+    int deleteUserById(int userId);
+
+
 
 }

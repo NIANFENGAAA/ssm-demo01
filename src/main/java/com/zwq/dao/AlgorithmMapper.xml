@@ -13,7 +13,7 @@
     </select>
 
     <select id="selectAllAlgorithm" resultType="algorithm">
-        select * from ssm.algorithm;
+        select * from ssm.algorithm
     </select>
 
     <select id="selectOneAlgorithmById" resultType="algorithm">
@@ -25,7 +25,11 @@
     </delete>
 
     <select id="selectAlgorithmByName" resultType="algorithm">
-        select * from ssm.algorithm where algorithm_name like #{keyword};
+        select * from ssm.algorithm where algorithm_name like #{keyword} and user_id = #{userId}
+    </select>
+
+    <select id="selectAlgorithmByNameAdmin" resultType="algorithm">
+        select * from ssm.algorithm where algorithm_name like #{keyword}
     </select>
 
 </mapper>

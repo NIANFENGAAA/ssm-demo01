@@ -1,10 +1,13 @@
 package com.zwq.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.zwq.pojo.Algorithm;
+import com.zwq.pojo.User;
 import com.zwq.service.AlgorithmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,8 +56,8 @@ public class AlgorithmController {
             keyword = "%" + keyword + "%";
         }
         System.out.println("keyword:"+keyword);
-
-        List<Algorithm> algorithmList = algorithmService.selectAlgorithmByName(keyword);
+        int presentUserId = (int) session.getAttribute("presentUserId");
+        List<Algorithm> algorithmList = algorithmService.selectAlgorithmByName(keyword,presentUserId);
 
         System.out.println("查询得到的集合个数为： "+algorithmList.size());
         for (Algorithm algorithm : algorithmList) {
@@ -175,6 +178,59 @@ public class AlgorithmController {
             session.setAttribute("no","删除失败！");
         }
         return "algorithmPage";
+    }
+
+    @RequestMapping("goAdmin_algorithm")
+    public String goAdmin_algorithm(){
+        return "admin_algorithm";
+    }
+
+
+
+    @RequestMapping("adminGetAllAlgorithm")
+    public String adminGetAllAlgorithm(HttpSession session,@RequestParam(value = "keyword") String keyword){
+        System.out.println("keyword:"+keyword);
+        if (keyword == null){
+            keyword = "%%";
+        }else {
+            keyword = "%" + keyword + "%";
+        }
+        System.out.println("keyword:"+keyword);
+        session.setAttribute("AlgorithmKeyword",keyword);
+
+        List<Algorithm> algorithmList = algorithmService.selectAllAlgorithm();
+        session.setAttribute("algorithmList",algorithmList);
+
+
+        return "redirect:adminAlgorithmPageInfo?pageNum=1";
+    }
+
+
+    //分页操作
+    @RequestMapping("adminAlgorithmPageInfo")
+    public String adminUserPageInfo(int pageNum, Model model, HttpSession session){
+        System.out.println("pageNum:" + pageNum);
+        String AlgorithmKeyword = (String) session.getAttribute("AlgorithmKeyword");
+        System.out.println("AlgorithmKeyword:" + AlgorithmKeyword);
+
+        PageInfo<Algorithm> pageInfo = algorithmService.getAlgorithmByPage(pageNum, AlgorithmKeyword);
+        model.addAttribute("AlgorithmPage",pageInfo);
+//        //存页数，方便定位
+//        session.getServletContext().setAttribute("pageNum",pageNum);
+        return "admin_algorithm";
+    }
+
+    //删除算法
+    @RequestMapping("deleteAlgorithmById")
+    public String deleteAlgorithmByUserId(int id){
+        int i = algorithmService.deleteAlgorithmById(id);
+        if (i > 0){
+            System.out.println("删除成功！");
+            return "redirect:adminGetAllAlgorithm?keyword=";
+        }else {
+            System.out.println("删除失败！");
+            return "redirect:adminGetAllAlgorithm?keyword=";
+        }
     }
 
 }
